@@ -27,6 +27,11 @@ export default {
   background-color: #0AB7E2;
   color: #ffffff;
   font-weight: bold;
+  transition: all .3s;
+  &:hover {
+    opacity: 0.6;
+    filter: brightness(100%);
+  }
 }
 .btnText {
   font-size: 1.2rem;
