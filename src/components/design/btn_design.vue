@@ -16,6 +16,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+/* TODO:hoverを追加する */
 .btnBase {
   width: fit-content;
   height: fit-content;
