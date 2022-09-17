@@ -1,5 +1,5 @@
 <template>
-  <logoSmall/>
+  <logoSmall />
   <div class="center">
     <div class="mainArea">
       <p class="title">プロフィールカードの作成</p>
@@ -9,34 +9,93 @@
         <!-- TODO:入力完了したらチェックマークを表示させる -->
         <div class="inputFlex">
           <label for="name"><p>名前 or ニックネーム</p></label>
-          <input id="name" name="name" placeholder="名前 or ニックネーム" v-model="userName"/>
+          <input
+            id="name"
+            name="name"
+            placeholder="名前 or ニックネーム"
+            v-model="userName"
+          />
         </div>
         <div>
           <p>アイコン選択</p>
           <div id="containerArea">
-            <img v-if="imgURL" alt="profile icon woman_1" :src="require(`@/assets/profile_icon//${imgURL}.png`)">
+            <img
+              v-if="imgURL"
+              alt="profile icon woman_1"
+              :src="require(`@/assets/profile_icon//${imgURL}.png`)"
+            />
             <div id="container">
-              <img alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png" @click="iconSelect('woman_1')">
-              <img alt="profile icon woman_2" src="../../assets/profile_icon/woman_2.png" @click="iconSelect('woman_2')">
-              <img alt="profile icon woman_3" src="../../assets/profile_icon/woman_3.png" @click="iconSelect('woman_3')">
-              <img alt="profile icon woman_4" src="../../assets/profile_icon/woman_4.png" @click="iconSelect('woman_4')">
-              <img alt="profile icon woman_5" src="../../assets/profile_icon/woman_5.png" @click="iconSelect('woman_5')">
-              <img alt="profile icon man_1" src="../../assets/profile_icon/man_1.png" @click="iconSelect('man_1')">
-              <img alt="profile icon man_2" src="../../assets/profile_icon/man_2.png" @click="iconSelect('man_2')">
-              <img alt="profile icon man_3" src="../../assets/profile_icon/man_3.png" @click="iconSelect('man_3')">
-              <img alt="profile icon man_4" src="../../assets/profile_icon/man_4.png" @click="iconSelect('man_4')">
-              <img alt="profile icon man_5" src="../../assets/profile_icon/man_5.png" @click="iconSelect('man_5')">
+              <img
+                alt="profile icon woman_1"
+                src="../../assets/profile_icon/woman_1.png"
+                @click="iconSelect('woman_1')"
+              />
+              <img
+                alt="profile icon woman_2"
+                src="../../assets/profile_icon/woman_2.png"
+                @click="iconSelect('woman_2')"
+              />
+              <img
+                alt="profile icon woman_3"
+                src="../../assets/profile_icon/woman_3.png"
+                @click="iconSelect('woman_3')"
+              />
+              <img
+                alt="profile icon woman_4"
+                src="../../assets/profile_icon/woman_4.png"
+                @click="iconSelect('woman_4')"
+              />
+              <img
+                alt="profile icon woman_5"
+                src="../../assets/profile_icon/woman_5.png"
+                @click="iconSelect('woman_5')"
+              />
+              <img
+                alt="profile icon man_1"
+                src="../../assets/profile_icon/man_1.png"
+                @click="iconSelect('man_1')"
+              />
+              <img
+                alt="profile icon man_2"
+                src="../../assets/profile_icon/man_2.png"
+                @click="iconSelect('man_2')"
+              />
+              <img
+                alt="profile icon man_3"
+                src="../../assets/profile_icon/man_3.png"
+                @click="iconSelect('man_3')"
+              />
+              <img
+                alt="profile icon man_4"
+                src="../../assets/profile_icon/man_4.png"
+                @click="iconSelect('man_4')"
+              />
+              <img
+                alt="profile icon man_5"
+                src="../../assets/profile_icon/man_5.png"
+                @click="iconSelect('man_5')"
+              />
             </div>
           </div>
         </div>
         <!-- TODO:v-forで自動生成する -->
         <!-- TODO:各質問文をDBから取得したデータを用いるように修正する -->
         <!-- answer 1 -->
+
+        <li v-for="(item, index) in data" :key="index">
+          {{ item }}
+        </li>
+
         <div class="questionFlex">
           <p>Q1. 交流会に参加した理由は？</p>
           <div class="inputFlex">
             <label for="answer1">必須</label>
-            <input id="answer1" name="answer1" placeholder="回答を入力してください" v-model="answer1"/>
+            <input
+              id="answer1"
+              name="answer1"
+              placeholder="回答を入力してください"
+              v-model="answer1"
+            />
           </div>
         </div>
         <!-- answer 2 -->
@@ -45,7 +104,12 @@
           <div class="inputFlex">
             <!-- TODO:必須or任意のチェックを行う -->
             <label for="answer2">必須</label>
-            <input id="answer2" name="answer2" placeholder="回答を入力してください" v-model="answer2"/>
+            <input
+              id="answer2"
+              name="answer2"
+              placeholder="回答を入力してください"
+              v-model="answer2"
+            />
           </div>
         </div>
         <!-- answer 3 -->
@@ -53,7 +117,12 @@
           <p>Q3. 学生時代の部活は何をしていましたか？</p>
           <div class="inputFlex">
             <label for="answer3">必須</label>
-            <input id="answer3" name="answer3" placeholder="回答を入力してください" v-model="answer3"/>
+            <input
+              id="answer3"
+              name="answer3"
+              placeholder="回答を入力してください"
+              v-model="answer3"
+            />
           </div>
         </div>
       </div>
@@ -68,8 +137,11 @@
 </template>
 
 <script>
-import logoSmall from '../design/RightTopLogo.vue'
-import Btn from '../design/btn_design.vue'
+import logoSmall from "../design/RightTopLogo.vue";
+import Btn from "../design/btn_design.vue";
+
+import db from "../../firebase.js"; //add database
+
 export default {
   components: {
     logoSmall,
@@ -79,31 +151,48 @@ export default {
     return {
       // userName,answer1,answer2,answer3は値が入力されると自動で各変数に代入されます
       // imgURLはユーザがアイコンの画像を押すと、各画像に対応した値が変数に代入されます
-      userName: '',
-      imgURL: 'woman_1',
-      answer1: '',
-      answer2: '',
-      answer3: '',
-    }
+      userName: "",
+      imgURL: "woman_1",
+      answer1: "",
+      answer2: "",
+      answer3: "",
+      data: [],
+    };
   },
   methods: {
     iconSelect(value) {
-      this.imgURL = value
+      this.imgURL = value;
     },
     insertProfileData() {
-      console.log(this.userName)
-      console.log(this.imgURL)
-      console.log(this.answer1)
-      console.log(this.answer2)
-      console.log(this.answer3)
+      console.log(this.userName);
+      console.log(this.imgURL);
+      console.log(this.answer1);
+      console.log(this.answer2);
+      console.log(this.answer3);
       // TODO:必須の項目が全て記入されているか確認し、不備があればエラーを表示する
       // TODO:DBに値を挿入してからthis.$router.push('/user-list/1234')を行うように修正する
       setTimeout(() => {
-        this.$router.push('/user-list/1234')
+        this.$router.push("/user-list/1234");
       }, 5000);
-    }
+    },
+  },
+  
+  name: "Firestore",
+  mounted: function () {
+    db.collection("OnMeeP-Question")
+      //TODO:URLパラメータから出す問題を変える
+      //'12'という文字列が入っている部分へ、View.vueから取ってきたパラメータを入れてください
+      .where('question_url', '==', '12')
+      .get()
+      .then((querysnapshot) =>{
+        if(querysnapshot.empty){console.log("データないよ！！")}
+        querysnapshot.forEach((doc) => {
+          this.data.push(doc.data())
+      console.log(doc.id, "=>", doc.data());
+      });
+      });
+    },
   }
-}
 </script>
 
 <style scoped lang="scss">
@@ -134,13 +223,13 @@ export default {
 }
 #container {
   width: 25rem;
-	display: flex;
-	flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.8rem 1rem;
   img {
     width: calc(5rem - 1rem);
     cursor: pointer;
-    transition: all .3s;
+    transition: all 0.3s;
     &:hover {
       opacity: 0.6;
       filter: brightness(100%);
@@ -151,7 +240,7 @@ export default {
   width: fit-content;
   display: flex;
   flex-direction: column;
-  gap:0.8rem;
+  gap: 0.8rem;
   align-items: flex-start;
 }
 .inputFlex {

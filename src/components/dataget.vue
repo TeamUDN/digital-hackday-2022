@@ -18,8 +18,8 @@ export default {
     };
   },
   mounted: function () {
-    db.collection("OnMeeP")
-      .get()
+    db.collection("OnMeeP-Question")
+      .get('1234')
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           console.log(`${doc.id} => ${doc.data().name}`);
