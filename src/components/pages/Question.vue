@@ -8,7 +8,7 @@
         <!-- TODO:add progress bar here -->
         <div class="inputFlex">
           <label for="name"><p>名前 or ニックネーム</p></label>
-          <input id="name" name="name" placeholder="名前 or ニックネーム" />
+          <input id="name" name="name" placeholder="名前 or ニックネーム" v-model="userName"/>
         </div>
         <div>
           <p>アイコン選択</p>
@@ -35,7 +35,7 @@
           <p>Q1. 交流会に参加した理由は？</p>
           <div class="inputFlex">
             <label for="answer1">必須</label>
-            <input id="answer1" name="answer1" placeholder="回答を入力してください" />
+            <input id="answer1" name="answer1" placeholder="回答を入力してください" v-model="answer1"/>
           </div>
         </div>
         <!-- answer 2 -->
@@ -43,7 +43,7 @@
           <p>Q2. 日頃の業務内容を教えて下さい</p>
           <div class="inputFlex">
             <label for="answer2">必須</label>
-            <input id="answer2" name="answer2" placeholder="回答を入力してください" />
+            <input id="answer2" name="answer2" placeholder="回答を入力してください" v-model="answer2"/>
           </div>
         </div>
         <!-- answer 3 -->
@@ -51,7 +51,7 @@
           <p>Q3. 学生時代の部活は何をしていましたか？</p>
           <div class="inputFlex">
             <label for="answer3">必須</label>
-            <input id="answer3" name="answer3" placeholder="回答を入力してください" />
+            <input id="answer3" name="answer3" placeholder="回答を入力してください" v-model="answer3"/>
           </div>
         </div>
       </div>
@@ -74,13 +74,20 @@ export default {
   },
   data() {
     return {
-      imgURL: 'woman_1'
+      // userName,answer1,answer2,answer3は値が入力されると自動で各変数に代入されます
+      // imgURLはユーザがアイコンの画像を押すと、各画像に対応した値が変数に代入されます
+      userName: '',
+      imgURL: 'woman_1',
+      answer1: '',
+      answer2: '',
+      answer3: '',
     }
   },
   methods: {
     iconSelect(value) {
       this.imgURL = value
     }
+    // TODO:「プロフィールカードを作成する」ボタンを押したときに5つの変数の値をDBに挿入する関数を書く
   }
 }
 </script>
