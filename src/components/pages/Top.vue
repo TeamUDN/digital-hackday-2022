@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 #center {
   width:100vw;
   height: 100vh;
@@ -41,6 +41,14 @@ export default {
 }
 #btn {
   width: fit-content;
+  margin: 0 auto;
+}
+.whiteSquare {
+  width: fit-content;
+  background-color: #ffffff;
+  border: 2px solid #0AB7E2;
+  border-radius: 5px;
+  padding: 2rem;
   margin: 0 auto;
 }
 </style>

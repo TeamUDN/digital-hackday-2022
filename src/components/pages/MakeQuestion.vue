@@ -1,5 +1,7 @@
 <template>
   <logoSmall/>
+  <div class="whiteSquare">
+  </div>
   <div id="btn">
     <router-link to="/make-question">
       <Btn btn-text="URLを発行する"></Btn>
