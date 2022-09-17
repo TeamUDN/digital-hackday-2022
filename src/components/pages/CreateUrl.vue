@@ -5,7 +5,7 @@
       <p>URLが発行されました！</p>
       <p class="urlFlex">
         <router-link :to="`/question/${urlStr}`" target="_blank">https://udon-digital-hackday-2022.web.app/question/{{urlStr}}</router-link>
-        <fa icon="copy" class="fa-icon"/>
+        <fa icon="copy" class="fa-icon" @click="copyToClipboard()"/>
       </p>
     </div>
   </div>
@@ -25,6 +25,19 @@ export default {
   mounted() {
     console.log('mounted!')
     // TODO:ここにDBからURLを取得する処理を追加
+  },
+  methods: {
+    copyToClipboard() {
+      let copyText = `https://udon-digital-hackday-2022.web.app/question/${this.urlStr}`
+      navigator.clipboard.writeText(copyText)
+        .then(() => {
+          // TODO:copyed!表示を出す
+          console.log("copied!")
+        })
+        .catch(e => {
+          console.error(e)
+        })
+    }
   }
 }
 </script>
@@ -42,11 +55,20 @@ export default {
 .urlFlex {
   width: fit-content;
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: center;
   a {
     color: #0a72e2;
     font-size: 1.4rem;
+    &:hover{
+      color: #0AB7E2;
+    }
+  }
+  .fa-icon {
+    cursor: pointer;
+    &:hover{
+      color: #0AB7E2;
+    }
   }
 }
 </style>

@@ -97,6 +97,6 @@ button{
 /* icon style */
 .fa-icon {
   font-size: 1.5rem;
-  color: #0AB7E2;
+  color: #0a72e2;
 }
 </style>
