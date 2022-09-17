@@ -3,10 +3,10 @@ import App from './App.vue'
 import VueParticles from 'vue-particles'
 import router from './router.js'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faLeaf } from '@fortawesome/free-solid-svg-icons'
+import { faCopy } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faLeaf)
+library.add(faCopy)
 
 const app = createApp(App)
 app.use(VueParticles)
