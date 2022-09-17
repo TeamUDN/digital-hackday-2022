@@ -6,13 +6,13 @@
       <div class="whiteSquare">
         <p>質問に回答してください</p>
         <!-- TODO:add progress bar here -->
+        <!-- TODO:入力完了したらチェックマークを表示させる -->
         <div class="inputFlex">
           <label for="name"><p>名前 or ニックネーム</p></label>
           <input id="name" name="name" placeholder="名前 or ニックネーム" v-model="userName"/>
         </div>
         <div>
           <p>アイコン選択</p>
-          <!-- TODO:icon img click choice -->
           <div id="containerArea">
             <img v-if="imgURL" alt="profile icon woman_1" :src="require(`@/assets/profile_icon//${imgURL}.png`)">
             <div id="container">
@@ -29,7 +29,8 @@
             </div>
           </div>
         </div>
-        <!-- TODO:v-forで自動生成 -->
+        <!-- TODO:v-forで自動生成する -->
+        <!-- TODO:各質問文をDBから取得したデータを用いるように修正する -->
         <!-- answer 1 -->
         <div class="questionFlex">
           <p>Q1. 交流会に参加した理由は？</p>
@@ -55,6 +56,7 @@
           </div>
         </div>
       </div>
+      <!-- TODO:ページ遷移する前にDBに値を挿入する処理を挟むように修正する -->
       <div id="btn">
         <router-link to="/user-list/1234">
           <Btn btn-text="プロフィールカードを作成する"></Btn>
