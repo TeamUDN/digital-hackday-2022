@@ -1,6 +1,6 @@
 <template>
-  <div id="center">
-    <div id="topArea">
+  <div class="center">
+    <div class="mainArea">
       <img id="logo" alt="OnMeeP logo" src="../../assets/onmeep_logo.png">
       <div id="btn">
         <router-link to="/make-question">
@@ -21,34 +21,38 @@ export default {
 </script>
 
 <style lang="scss">
-#center {
+/* 上下中央 */
+.center {
   width:100vw;
   height: 100vh;
   display:flex;
   align-items: center;
   justify-content: center;
 }
-#topArea {
+/* 全体のflex */
+.mainArea {
   width: fit-content;
   display: flex;
   flex-flow: column;
-  gap: 10rem;
+  gap: 3rem;
   margin: 0 auto;
 }
-#logo {
-  width: 70%;
-  margin: 0 auto;
-}
-#btn {
-  width: fit-content;
-  margin: 0 auto;
-}
+/* メインコンテンツの囲い */
 .whiteSquare {
   width: fit-content;
   background-color: #ffffff;
   border: 2px solid #0AB7E2;
   border-radius: 5px;
   padding: 2rem;
+  margin: 0 auto;
+}
+/* scoped */
+#logo {
+  width: 70%;
+  margin: 0 auto 7rem;
+}
+#btn {
+  width: fit-content;
   margin: 0 auto;
 }
 </style>

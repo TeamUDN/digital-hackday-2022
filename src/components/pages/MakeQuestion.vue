@@ -1,11 +1,15 @@
 <template>
   <logoSmall/>
-  <div class="whiteSquare">
-  </div>
-  <div id="btn">
-    <router-link to="/make-question">
-      <Btn btn-text="URLを発行する"></Btn>
-    </router-link>
+  <div class="center">
+    <div class="mainArea">
+      <div class="whiteSquare">
+      </div>
+      <div id="btn">
+        <router-link to="/make-question">
+          <Btn btn-text="URLを発行する"></Btn>
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
