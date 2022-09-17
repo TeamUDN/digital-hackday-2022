@@ -14,7 +14,7 @@
           <p>アイコン選択</p>
           <!-- TODO:icon img click choice -->
           <div id="containerArea">
-            <img alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
+            <img v-if="imgURL" alt="profile icon woman_1" :src="require(`@/assets/profile_icon//${imgURL}.png`)">
             <div id="container">
               <img alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
               <img alt="profile icon woman_2" src="../../assets/profile_icon/woman_2.png">
@@ -72,6 +72,11 @@ export default {
     logoSmall,
     Btn,
   },
+  data() {
+    return {
+      imgURL: 'woman_1'
+    }
+  }
 }
 </script>
 
