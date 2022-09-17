@@ -16,16 +16,16 @@
           <div id="containerArea">
             <img v-if="imgURL" alt="profile icon woman_1" :src="require(`@/assets/profile_icon//${imgURL}.png`)">
             <div id="container">
-              <img alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
-              <img alt="profile icon woman_2" src="../../assets/profile_icon/woman_2.png">
-              <img alt="profile icon woman_3" src="../../assets/profile_icon/woman_3.png">
-              <img alt="profile icon woman_4" src="../../assets/profile_icon/woman_4.png">
-              <img alt="profile icon woman_5" src="../../assets/profile_icon/woman_5.png">
-              <img alt="profile icon man_1" src="../../assets/profile_icon/man_1.png">
-              <img alt="profile icon man_2" src="../../assets/profile_icon/man_2.png">
-              <img alt="profile icon man_3" src="../../assets/profile_icon/man_3.png">
-              <img alt="profile icon man_4" src="../../assets/profile_icon/man_4.png">
-              <img alt="profile icon man_5" src="../../assets/profile_icon/man_5.png">
+              <img alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png" @click="iconSelect('woman_1')">
+              <img alt="profile icon woman_2" src="../../assets/profile_icon/woman_2.png" @click="iconSelect('woman_2')">
+              <img alt="profile icon woman_3" src="../../assets/profile_icon/woman_3.png" @click="iconSelect('woman_3')">
+              <img alt="profile icon woman_4" src="../../assets/profile_icon/woman_4.png" @click="iconSelect('woman_4')">
+              <img alt="profile icon woman_5" src="../../assets/profile_icon/woman_5.png" @click="iconSelect('woman_5')">
+              <img alt="profile icon man_1" src="../../assets/profile_icon/man_1.png" @click="iconSelect('man_1')">
+              <img alt="profile icon man_2" src="../../assets/profile_icon/man_2.png" @click="iconSelect('man_2')">
+              <img alt="profile icon man_3" src="../../assets/profile_icon/man_3.png" @click="iconSelect('man_3')">
+              <img alt="profile icon man_4" src="../../assets/profile_icon/man_4.png" @click="iconSelect('man_4')">
+              <img alt="profile icon man_5" src="../../assets/profile_icon/man_5.png" @click="iconSelect('man_5')">
             </div>
           </div>
         </div>
@@ -76,6 +76,11 @@ export default {
     return {
       imgURL: 'woman_1'
     }
+  },
+  methods: {
+    iconSelect(value) {
+      this.imgURL = value
+    }
   }
 }
 </script>
@@ -113,6 +118,12 @@ export default {
   gap: 0.8rem 1rem;
   img {
     width: calc(5rem - 1rem);
+    cursor: pointer;
+    transition: all .3s;
+    &:hover {
+      opacity: 0.6;
+      filter: brightness(110%);
+    }
   }
 }
 .questionFlex {
