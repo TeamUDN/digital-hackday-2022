@@ -3,6 +3,7 @@
   <div class="center">
     <div class="mainArea">
       <div class="whiteSquare">
+        <p>質問を選んでください</p>
       </div>
       <div id="btn">
         <router-link to="/make-question">
