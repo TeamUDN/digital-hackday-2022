@@ -2,6 +2,7 @@
   <logoSmall/>
   <div class="center">
     <div class="mainArea">
+      <!-- TODO:質問を常に上部固定する position sticky? -->
       <p class="title">参加者のみなさまへの質問</p>
       <div class="whiteSquare userQuestion">
         <p>Q1. 交流会に参加した理由は？</p>

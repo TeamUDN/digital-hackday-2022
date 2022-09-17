@@ -94,4 +94,9 @@ button{
   padding: 2.5rem;
   margin: 0 auto;
 }
+/* icon style */
+.fa-icon {
+  font-size: 1.5rem;
+  color: #0a72e2;
+}
 </style>
