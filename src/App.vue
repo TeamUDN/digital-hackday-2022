@@ -22,17 +22,6 @@
   <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
-
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -54,3 +43,24 @@ export default {
   z-index: -999;
 }
 </style>
+
+<template>
+  <div>
+    <h1>App</h1>
+    <router-link to="/view/1">画面1</router-link>
+    <router-link to="/view/2">画面2</router-link>
+    <router-view />
+  </div>
+</template>
+
+<script>
+  export default {
+    name: "App",
+    watch: {
+      $route(to, from) {
+        console.log("to=" + to + "from=" + from);
+        this.$router.push(to);
+      },
+    },
+  };
+</script>
