@@ -4,6 +4,7 @@
     <div class="mainArea">
       <div class="whiteSquare">
         <p>質問を選んでください</p>
+        <!-- TODO:add progress bar here -->
         <!-- TODO:v-forで自動生成する -->
         <!-- 質問1 -->
         <div class="questionRowFlex">
