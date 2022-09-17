@@ -38,7 +38,9 @@ export default {
 <style lang="scss">
 /* reset css */
 p {
+  width: fit-content;
   margin: 0;
+  font-weight: bold;
 }
 a {
   text-decoration: none;
@@ -51,7 +53,7 @@ a {
   color: #2c3e50;
 }
 #particles-js {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -73,6 +75,7 @@ a {
   flex-flow: column;
   gap: 3rem;
   margin: 0 auto;
+  align-items: center;
 }
 /* メインコンテンツの囲い */
 .whiteSquare {

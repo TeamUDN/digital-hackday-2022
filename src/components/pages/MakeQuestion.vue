@@ -9,7 +9,7 @@
         <!-- 質問1 -->
         <div class="questionRowFlex">
           <div class="questionInputFlex">
-            <label for="question1">Q1.</label>
+            <label for="question1"><p>Q1.</p></label>
             <input list="question1_data" id="question1" name="question1" placeholder="自由記述 or 選択肢から選択してください" />
             <datalist id="question1_data">
               <option value="このイベントに参加した理由は？"></option>
@@ -31,7 +31,7 @@
         <!-- 質問2 -->
         <div class="questionRowFlex">
           <div class="questionInputFlex">
-            <label for="question2">Q2.</label>
+            <label for="question2"><p>Q2.</p></label>
             <input list="question2_data" id="question2" name="question2" placeholder="自由記述 or 選択肢から選択してください" />
             <datalist id="question2_data">
               <option value="このイベントに参加した理由は？"></option>
@@ -53,7 +53,7 @@
         <!-- 質問3 -->
         <div class="questionRowFlex">
           <div class="questionInputFlex">
-            <label for="question3">Q3.</label>
+            <label for="question3"><p>Q3.</p></label>
             <input list="question3_data" id="question3" name="question3" placeholder="自由記述 or 選択肢から選択してください" />
             <datalist id="question3_data">
               <option value="このイベントに参加した理由は？"></option>
