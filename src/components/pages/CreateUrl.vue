@@ -3,8 +3,9 @@
   <div class="center">
     <div class="whiteSquare">
       <p>URLが発行されました！</p>
-      <p>
+      <p class="urlFlex">
         <router-link :to="`/question/${urlStr}`" target="_blank">https://udon-digital-hackday-2022.web.app/question/{{urlStr}}</router-link>
+        <fa icon="copy" class="fa-icon"/>
       </p>
     </div>
   </div>
@@ -36,6 +37,16 @@ export default {
   align-items: center;
   p {
     font-size: 1.3rem;
+  }
+}
+.urlFlex {
+  width: fit-content;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  a {
+    color: #0a72e2;
+    font-size: 1.4rem;
   }
 }
 </style>
