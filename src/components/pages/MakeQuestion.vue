@@ -10,7 +10,7 @@
         <div class="questionRowFlex">
           <div class="questionInputFlex">
             <label for="question1"><p>Q1.</p></label>
-            <input list="question1_data" id="question1" name="question1" placeholder="自由記述 or 選択肢から選択してください" />
+            <input list="question1_data" id="question1" name="question1" v-model="question1" placeholder="自由記述 or 選択肢から選択してください" />
             <datalist id="question1_data">
               <option value="このイベントに参加した理由は？"></option>
               <option value="日頃の業務内容を教えて下さい"></option>
@@ -19,11 +19,11 @@
           </div>
           <div class="radioFlex">
             <div>
-              <input type="radio" id="Q1Choice1" name="Q1" value="required" checked>
+              <input type="radio" id="Q1Choice1" name="Q1" value="required" v-model="Q1radio" checked>
               <label for="Q1Choice1">必須</label>
             </div>
             <div>
-              <input type="radio" id="Q1Choice2" name="Q1" value="noRequired">
+              <input type="radio" id="Q1Choice2" name="Q1" value="noRequired" v-model="Q1radio">
               <label for="Q1Choice2">任意</label>
             </div>
           </div>
@@ -32,7 +32,7 @@
         <div class="questionRowFlex">
           <div class="questionInputFlex">
             <label for="question2"><p>Q2.</p></label>
-            <input list="question2_data" id="question2" name="question2" placeholder="自由記述 or 選択肢から選択してください" />
+            <input list="question2_data" id="question2" name="question2" v-model="question2" placeholder="自由記述 or 選択肢から選択してください" />
             <datalist id="question2_data">
               <option value="このイベントに参加した理由は？"></option>
               <option value="日頃の業務内容を教えて下さい"></option>
@@ -41,11 +41,11 @@
           </div>
           <div class="radioFlex">
             <div>
-              <input type="radio" id="Q2Choice1" name="Q2" value="required" checked>
+              <input type="radio" id="Q2Choice1" name="Q2" value="required" v-model="Q2radio" checked>
               <label for="Q2Choice1">必須</label>
             </div>
             <div>
-              <input type="radio" id="Q2Choice2" name="Q2" value="noRequired">
+              <input type="radio" id="Q2Choice2" name="Q2" value="noRequired" v-model="Q2radio">
               <label for="Q2Choice2">任意</label>
             </div>
           </div>
@@ -54,7 +54,7 @@
         <div class="questionRowFlex">
           <div class="questionInputFlex">
             <label for="question3"><p>Q3.</p></label>
-            <input list="question3_data" id="question3" name="question3" placeholder="自由記述 or 選択肢から選択してください" />
+            <input list="question3_data" id="question3" name="question3" v-model="question3" placeholder="自由記述 or 選択肢から選択してください" />
             <datalist id="question3_data">
               <option value="このイベントに参加した理由は？"></option>
               <option value="日頃の業務内容を教えて下さい"></option>
@@ -63,20 +63,21 @@
           </div>
           <div class="radioFlex">
             <div>
-              <input type="radio" id="Q3Choice1" name="Q3" value="required" checked>
+              <input type="radio" id="Q3Choice1" name="Q3" value="required" v-model="Q3radio" checked>
               <label for="Q3Choice1">必須</label>
             </div>
             <div>
-              <input type="radio" id="Q3Choice2" name="Q3" value="noRequired">
+              <input type="radio" id="Q3Choice2" name="Q3" value="noRequired" v-model="Q3radio">
               <label for="Q3Choice2">任意</label>
             </div>
           </div>
         </div>
       </div>
+      <!-- TODO:ページ遷移する前にDBに値を挿入する処理を挟むように修正する -->
       <div id="btn">
-        <router-link to="/create-url">
+        <button type="button" @click="insertQuestionData()">
           <Btn btn-text="URLを発行する"></Btn>
-        </router-link>
+        </button>
       </div>
     </div>
   </div>
@@ -90,6 +91,40 @@ export default {
     Btn,
     logoSmall,
   },
+  data() {
+    return {
+      question1: '',
+      question2: '',
+      question3: '',
+      Q1radio: 'required',
+      Q2radio: 'required',
+      Q3radio: 'required',
+    }
+  },
+  methods: {
+    insertQuestionData() {
+      console.log(this.question1)
+      console.log(this.Q1radio)
+      console.log(this.question2)
+      console.log(this.Q2radio)
+      console.log(this.question3)
+      console.log(this.Q3radio)
+
+      // 乱数生成（半角英字大文字小文字・12桁）
+      let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+      let rand_str = ''
+      for ( var i = 0; i < 12; i++ ) {
+        rand_str += chars.charAt(Math.floor(Math.random() * chars.length))
+      }
+      console.log(rand_str)
+
+      // TODO:3つの項目が全て記入されているか確認し、不備があればエラーを表示する
+      // TODO:DBに値を挿入してからthis.$router.push('/create-url')を行うように修正する
+      setTimeout(() => {
+        this.$router.push('/create-url')
+      }, 5000)
+    }
+  }
 }
 </script>
 
