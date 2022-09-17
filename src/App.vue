@@ -19,8 +19,23 @@
   >
   </vue-particles>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>App</h1>
+  <router-link to="/view/1">画面1</router-link>
+  <router-link to="/view/2">画面2</router-link>
+  <router-view />
 </template>
+
+<script>
+  export default {
+    name: "App",
+    watch: {
+      $route(to, from) {
+        console.log("to=" + to + "from=" + from);
+        this.$router.push(to);
+      },
+    },
+  };
+</script>
 
 <style lang="scss">
 #app {
@@ -43,24 +58,3 @@
   z-index: -999;
 }
 </style>
-
-<template>
-  <div>
-    <h1>App</h1>
-    <router-link to="/view/1">画面1</router-link>
-    <router-link to="/view/2">画面2</router-link>
-    <router-view />
-  </div>
-</template>
-
-<script>
-  export default {
-    name: "App",
-    watch: {
-      $route(to, from) {
-        console.log("to=" + to + "from=" + from);
-        this.$router.push(to);
-      },
-    },
-  };
-</script>
