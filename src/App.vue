@@ -1,34 +1,31 @@
 <template>
-  <vue-particles
-    color="#45caf5"
-    :particleOpacity="0.5"
-    linesColor="#45caf5"
-    :particlesNumber="80"
-    shapeType="circle"
-    :particleSize="3"
-    :linesWidth="1"
-    :lineLinked="true"
-    :lineOpacity="0.4"
-    :linesDistance="150"
-    :moveSpeed="5"
-    :hoverEffect="false"
-    hoverMode="grab"
-    :clickEffect="false"
-    clickMode="push"
-    retina_detect="true"
-  >
-  </vue-particles>
-  <!--
-  <router-link to="/view/1">画面1</router-link>
-  <router-link to="/view/2">画面2</router-link>
-  <router-view />
-  -->
-  <router-view />
+  <div id="app">
+    <vue-particles
+      color="#45caf5"
+      :particleOpacity="0.5"
+      linesColor="#45caf5"
+      :particlesNumber="80"
+      shapeType="circle"
+      :particleSize="3"
+      :linesWidth="1"
+      :lineLinked="true"
+      :lineOpacity="0.4"
+      :linesDistance="150"
+      :moveSpeed="5"
+      :hoverEffect="false"
+      hoverMode="grab"
+      :clickEffect="false"
+      clickMode="push"
+      retina_detect="true"
+    >
+    </vue-particles>
+    <router-view />
+  </div>
 </template>
 
 <script>
 export default {
-  name: "App",
+  name: "app",
   watch: {
     $route(to, from) {
       console.log("to=" + to + "from=" + from);
