@@ -18,24 +18,17 @@
     retina_detect="true"
   >
   </vue-particles>
-  <img id="logo" alt="OnMeeP logo" src="./assets/onmeep_logo.png">
   <!--
   <router-link to="/view/1">画面1</router-link>
   <router-link to="/view/2">画面2</router-link>
   <router-view />
   -->
-  <router-link to="/view/1">
-    <Btn btn-text="名刺テンプレートを作る"></Btn>
-  </router-link>
+  <router-view />
 </template>
 
 <script>
-import Btn from './components/design/btn_design.vue'
 export default {
   name: "App",
-  components: {
-    Btn,
-  },
   watch: {
     $route(to, from) {
       console.log("to=" + to + "from=" + from);
@@ -58,9 +51,7 @@ a {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 #particles-js {
   position: absolute;
@@ -70,8 +61,29 @@ a {
   height: 100%;
   z-index: -999;
 }
-#logo {
-  width: 50%;
+/* 上下中央 */
+.center {
+  width:100vw;
+  height: 100vh;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+/* 全体のflex */
+.mainArea {
+  width: fit-content;
+  display: flex;
+  flex-flow: column;
+  gap: 3rem;
+  margin: 0 auto;
+}
+/* メインコンテンツの囲い */
+.whiteSquare {
+  width: fit-content;
+  background-color: #ffffff;
+  border: 2px solid #0AB7E2;
+  border-radius: 5px;
+  padding: 2rem;
   margin: 0 auto;
 }
 </style>

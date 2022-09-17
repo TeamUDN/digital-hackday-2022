@@ -19,7 +19,7 @@ export default {
 .btnBase {
   width: fit-content;
   height: fit-content;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.8rem;
   border-radius: 5px;
   box-shadow: 3px 3px 3px #dddddd;
   cursor: pointer;
@@ -28,6 +28,6 @@ export default {
   font-weight: bold;
 }
 .btnText {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 </style>
