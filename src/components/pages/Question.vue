@@ -4,7 +4,7 @@
     <div class="mainArea">
       <p class="title">プロフィールカードの作成</p>
       <div class="whiteSquare">
-        <p>質問に回答してください</p>
+        <!--<p>質問に回答してください</p>-->
         <!-- TODO:add progress bar here -->
         <!-- TODO:入力完了したらチェックマークを表示させる -->
         <div class="inputFlex">
