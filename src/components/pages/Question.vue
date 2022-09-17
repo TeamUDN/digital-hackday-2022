@@ -43,6 +43,7 @@
         <div class="questionFlex">
           <p>Q2. 日頃の業務内容を教えて下さい</p>
           <div class="inputFlex">
+            <!-- TODO:必須or任意のチェックを行う -->
             <label for="answer2">必須</label>
             <input id="answer2" name="answer2" placeholder="回答を入力してください" v-model="answer2"/>
           </div>
@@ -58,9 +59,9 @@
       </div>
       <!-- TODO:ページ遷移する前にDBに値を挿入する処理を挟むように修正する -->
       <div id="btn">
-        <router-link to="/user-list/1234">
+        <button type="button" @click="insertProfileData()">
           <Btn btn-text="プロフィールカードを作成する"></Btn>
-        </router-link>
+        </button>
       </div>
     </div>
   </div>
@@ -88,8 +89,19 @@ export default {
   methods: {
     iconSelect(value) {
       this.imgURL = value
+    },
+    insertProfileData() {
+      console.log(this.userName)
+      console.log(this.imgURL)
+      console.log(this.answer1)
+      console.log(this.answer2)
+      console.log(this.answer3)
+      // TODO:必須の項目が全て記入されているか確認し、不備があればエラーを表示する
+      // TODO:DBに値を挿入してからthis.$router.push('/user-list/1234')を行うように修正する
+      setTimeout(() => {
+        this.$router.push('/user-list/1234')
+      }, 5000);
     }
-    // TODO:「プロフィールカードを作成する」ボタンを押したときに5つの変数の値をDBに挿入する関数を書く
   }
 }
 </script>
