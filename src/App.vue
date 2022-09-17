@@ -1,4 +1,5 @@
 <template>
+  <div id="app">
   <vue-particles
     color="#45caf5"
     :particleOpacity="0.5"
@@ -19,15 +20,15 @@
   >
   </vue-particles>
   <img alt="Vue logo" src="./assets/logo.png">
-  <h1>App</h1>
   <router-link to="/view/1">画面1</router-link>
   <router-link to="/view/2">画面2</router-link>
   <router-view />
+  </div>
 </template>
 
 <script>
   export default {
-    name: "App",
+    name: "app",
     watch: {
       $route(to, from) {
         console.log("to=" + to + "from=" + from);
