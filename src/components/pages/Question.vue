@@ -79,15 +79,10 @@
           </div>
         </div>
         <!-- TODO:v-forで自動生成する -->
-        <!-- TODO:各質問文をDBから取得したデータを用いるように修正する -->
+        <!-- TODO:必須or任意の出し分けをするように修正 -->
         <!-- answer 1 -->
-
-        <li v-for="(item, index) in data" :key="index">
-          {{ item }}
-        </li>
-
         <div class="questionFlex">
-          <p>Q1. 交流会に参加した理由は？</p>
+          <p>Q1. {{data[0]?.question1}}</p>
           <div class="inputFlex">
             <label for="answer1">必須</label>
             <input
@@ -100,7 +95,7 @@
         </div>
         <!-- answer 2 -->
         <div class="questionFlex">
-          <p>Q2. 日頃の業務内容を教えて下さい</p>
+          <p>Q2. {{data[0]?.question2}}</p>
           <div class="inputFlex">
             <!-- TODO:必須or任意のチェックを行う -->
             <label for="answer2">必須</label>
@@ -114,7 +109,7 @@
         </div>
         <!-- answer 3 -->
         <div class="questionFlex">
-          <p>Q3. 学生時代の部活は何をしていましたか？</p>
+          <p>Q3. {{data[0]?.question3}}</p>
           <div class="inputFlex">
             <label for="answer3">必須</label>
             <input
@@ -143,6 +138,7 @@ import Btn from "../design/btn_design.vue";
 import db from "../../firebase.js"; //add database
 
 export default {
+  name: "Firestore",
   components: {
     logoSmall,
     Btn,
@@ -158,6 +154,21 @@ export default {
       answer3: "",
       data: [],
     };
+  },
+  mounted() {
+    db.collection("OnMeeP-Question")
+    //TODO:URLパラメータから出す問題を変える
+    //'12'という文字列が入っている部分へ、View.vueから取ってきたパラメータを入れてください
+    .where('question_url', '==', '12')
+    .get()
+    .then((querysnapshot) =>{
+      if(querysnapshot.empty){console.log("データないよ！！")}
+      querysnapshot.forEach((doc) => {
+        this.data.push(doc.data())
+        console.log(doc.id, "=>", doc.data());
+      });
+    });
+    /* { "question3": "高校時代の部活は何でしたか", "question2_required": true, "question2": "日頃の業務内容を教えてください", "question3_required": "true", "question1": "交流会に参加した理由は？", "question1_required": true, "question_url": "12" } */
   },
   methods: {
     iconSelect(value) {
@@ -176,22 +187,6 @@ export default {
       }, 5000);
     },
   },
-  
-  name: "Firestore",
-  mounted: function () {
-    db.collection("OnMeeP-Question")
-      //TODO:URLパラメータから出す問題を変える
-      //'12'という文字列が入っている部分へ、View.vueから取ってきたパラメータを入れてください
-      .where('question_url', '==', '12')
-      .get()
-      .then((querysnapshot) =>{
-        if(querysnapshot.empty){console.log("データないよ！！")}
-        querysnapshot.forEach((doc) => {
-          this.data.push(doc.data())
-      console.log(doc.id, "=>", doc.data());
-      });
-      });
-    },
   }
 </script>
 
