@@ -19,12 +19,14 @@
   >
   </vue-particles>
   <img id="logo" alt="OnMeeP logo" src="./assets/onmeep_logo.png">
+  <!--
   <router-link to="/view/1">画面1</router-link>
   <router-link to="/view/2">画面2</router-link>
   <router-view />
-  <Btn
-    btn-text="名刺テンプレートを作る"
-  ></Btn>
+  -->
+  <router-link to="/view/1">
+    <Btn btn-text="名刺テンプレートを作る"></Btn>
+  </router-link>
 </template>
 
 <script>
@@ -47,6 +49,9 @@ export default {
 /* reset css */
 p {
   margin: 0;
+}
+a {
+  text-decoration: none;
 }
 /* common css */
 #app {
