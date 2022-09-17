@@ -8,7 +8,7 @@
 <style scoped lang="scss">
 #logo {
   width: 18%;
-  position: absolute;
+  position: fixed;
   top: 2rem;
   right: 2rem;
 }
