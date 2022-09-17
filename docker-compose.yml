@@ -1,0 +1,11 @@
+version: "3"
+services:
+  vue-cli:
+    container_name: vue-cli
+    build: .
+    ports:
+      - "8080:8080"
+    tty : true
+    privileged: true
+    volumes:
+      - ./:/Docker-Vue-CLI/
