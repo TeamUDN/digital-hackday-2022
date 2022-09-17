@@ -10,39 +10,41 @@
       </div>
       <p class="title">プロフィールカード一覧</p>
       <!-- TODO:DBから取得したデータをv-forで回してプロフィールカードを自動生成する -->
-      <!-- カード1 -->
-      <div class="whiteSquare">
-        <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
-        <div class="profileText">
-          <p class="cardName">しろくま</p>
-          <div class="userQuestion">
-            <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
-            <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
-            <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+      <div class="profileCardArea">
+        <!-- カード1 -->
+        <div class="whiteSquare">
+          <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
+          <div class="profileText">
+            <p class="cardName">しろくま</p>
+            <div class="userQuestion">
+              <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
+              <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
+              <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- カード2 -->
-      <div class="whiteSquare">
-        <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
-        <div class="profileText">
-          <p class="cardName">しろくま</p>
-          <div class="userQuestion">
-            <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
-            <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
-            <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+        <!-- カード2 -->
+        <div class="whiteSquare">
+          <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
+          <div class="profileText">
+            <p class="cardName">しろくま</p>
+            <div class="userQuestion">
+              <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
+              <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
+              <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- カード3 -->
-      <div class="whiteSquare">
-        <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
-        <div class="profileText">
-          <p class="cardName">しろくま</p>
-          <div class="userQuestion">
-            <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
-            <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
-            <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+        <!-- カード3 -->
+        <div class="whiteSquare">
+          <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
+          <div class="profileText">
+            <p class="cardName">しろくま</p>
+            <div class="userQuestion">
+              <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
+              <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
+              <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+            </div>
           </div>
         </div>
       </div>
@@ -70,6 +72,12 @@ export default {
   font-size: 1.4rem;
   font-weight: bold;
   margin-bottom: -2.2rem;
+}
+.profileCardArea {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 .whiteSquare {
   width: fit-content;
