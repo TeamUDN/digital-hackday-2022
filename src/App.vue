@@ -22,21 +22,33 @@
   <router-link to="/view/1">画面1</router-link>
   <router-link to="/view/2">画面2</router-link>
   <router-view />
+  <Btn
+    btn-text="名刺テンプレートを作る"
+  ></Btn>
 </template>
 
 <script>
-  export default {
-    name: "App",
-    watch: {
-      $route(to, from) {
-        console.log("to=" + to + "from=" + from);
-        this.$router.push(to);
-      },
+import Btn from './components/design/btn_design.vue'
+export default {
+  name: "App",
+  components: {
+    Btn,
+  },
+  watch: {
+    $route(to, from) {
+      console.log("to=" + to + "from=" + from);
+      this.$router.push(to);
     },
-  };
+  },
+}
 </script>
 
 <style lang="scss">
+/* reset css */
+p {
+  margin: 0;
+}
+/* common css */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
