@@ -83,7 +83,7 @@ a {
   background-color: #ffffff;
   border: 2px solid #0AB7E2;
   border-radius: 5px;
-  padding: 2rem;
+  padding: 2.5rem;
   margin: 0 auto;
 }
 </style>
