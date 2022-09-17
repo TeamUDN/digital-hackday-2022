@@ -53,6 +53,9 @@ button{
   padding: 0;
   appearance: none;
 }
+body {
+  margin: 0;
+}
 /* common css */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

@@ -3,48 +3,77 @@
   <div class="center">
     <div class="mainArea">
       <!-- TODO:質問を常に上部固定する position sticky? -->
-      <p class="title">参加者のみなさまへの質問</p>
-      <div class="whiteSquare userQuestion">
-        <p>Q1. 交流会に参加した理由は？</p>
-        <p>Q2. 日頃の業務内容を教えて下さい</p>
-        <p>Q3. 学生時代の部活は何をしていましたか？</p>
+      <div class="smoke"></div>
+      <div class="questionArea">
+        <p class="title">参加者のみなさまへの質問</p>
+        <div class="whiteSquare userQuestion">
+          <p>Q1. 交流会に参加した理由は？</p>
+          <p>Q2. 日頃の業務内容を教えて下さい</p>
+          <p>Q3. 学生時代の部活は何をしていましたか？</p>
+        </div>
       </div>
-      <p class="title">プロフィールカード一覧</p>
-      <!-- TODO:DBから取得したデータをv-forで回してプロフィールカードを自動生成する -->
-      <div class="profileCardArea">
-        <!-- カード1 -->
-        <div class="whiteSquare">
-          <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
-          <div class="profileText">
-            <p class="cardName">しろくま</p>
-            <div class="userQuestion">
-              <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
-              <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
-              <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+      <div class="profileArea">
+        <p class="title">プロフィールカード一覧</p>
+        <!-- TODO:DBから取得したデータをv-forで回してプロフィールカードを自動生成する -->
+        <div class="profileCardArea">
+          <!-- カード1 -->
+          <div class="whiteSquare">
+            <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
+            <div class="profileText">
+              <p class="cardName">しろくま</p>
+              <div class="userQuestion">
+                <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
+                <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
+                <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- カード2 -->
-        <div class="whiteSquare">
-          <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
-          <div class="profileText">
-            <p class="cardName">しろくま</p>
-            <div class="userQuestion">
-              <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
-              <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
-              <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+          <!-- カード2 -->
+          <div class="whiteSquare">
+            <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
+            <div class="profileText">
+              <p class="cardName">しろくま</p>
+              <div class="userQuestion">
+                <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
+                <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
+                <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- カード3 -->
-        <div class="whiteSquare">
-          <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
-          <div class="profileText">
-            <p class="cardName">しろくま</p>
-            <div class="userQuestion">
-              <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
-              <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
-              <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+          <!-- カード3 -->
+          <div class="whiteSquare">
+            <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
+            <div class="profileText">
+              <p class="cardName">しろくま</p>
+              <div class="userQuestion">
+                <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
+                <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
+                <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+              </div>
+            </div>
+          </div>
+          <!-- カード4 -->
+          <div class="whiteSquare">
+            <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
+            <div class="profileText">
+              <p class="cardName">しろくま</p>
+              <div class="userQuestion">
+                <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
+                <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
+                <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+              </div>
+            </div>
+          </div>
+          <!-- カード5 -->
+          <div class="whiteSquare">
+            <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
+            <div class="profileText">
+              <p class="cardName">しろくま</p>
+              <div class="userQuestion">
+                <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
+                <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
+                <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+              </div>
             </div>
           </div>
         </div>
@@ -66,8 +95,26 @@ export default {
 .center {
   height: auto;
 }
+.smoke {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(0deg, transparent 0 55%, #fff 100%);
+  position: fixed;
+  margin-top: -5rem;
+}
 .mainArea {
   margin: 5rem 0;
+}
+.questionArea {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  position: fixed;
+  margin: -2rem;
+}
+.profileArea {
+  margin-top: 15rem;
 }
 .title {
   font-size: 1.4rem;
