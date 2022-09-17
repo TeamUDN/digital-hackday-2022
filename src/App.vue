@@ -18,7 +18,7 @@
     retina_detect="true"
   >
   </vue-particles>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <img id="logo" alt="OnMeeP logo" src="./assets/onmeep_logo.png">
   <h1>App</h1>
   <router-link to="/view/1">画面1</router-link>
   <router-link to="/view/2">画面2</router-link>
@@ -45,9 +45,6 @@
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-  p{
-    color: red;
-  }
 }
 #particles-js {
   position: absolute;
@@ -56,5 +53,9 @@
   width: 100%;
   height: 100%;
   z-index: -999;
+}
+#logo {
+  width: 50%;
+  margin: 0 auto;
 }
 </style>
