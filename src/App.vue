@@ -53,7 +53,7 @@ a {
   color: #2c3e50;
 }
 #particles-js {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;

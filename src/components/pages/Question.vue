@@ -56,7 +56,7 @@
         </div>
       </div>
       <div id="btn">
-        <router-link to="/question/1234">
+        <router-link to="/user-list/1234">
           <Btn btn-text="プロフィールカードを作成する"></Btn>
         </router-link>
       </div>
