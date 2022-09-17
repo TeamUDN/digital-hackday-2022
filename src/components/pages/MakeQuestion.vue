@@ -74,7 +74,7 @@
         </div>
       </div>
       <div id="btn">
-        <router-link to="/make-question">
+        <router-link to="/create-url">
           <Btn btn-text="URLを発行する"></Btn>
         </router-link>
       </div>

@@ -24,6 +24,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import Top from './components/pages/Top.vue'
 import MakeQuestion from './components/pages/MakeQuestion.vue'
+import CreateUrl from './components/pages/CreateUrl.vue'
 import View from './View.vue';
 import NotFound from './components/NotFound.vue';
 
@@ -31,7 +32,8 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', component:Top },
-    { path: '/make-question', component:MakeQuestion },
+    { path: '/make-question', component: MakeQuestion },
+    { path: '/create-url', component:CreateUrl },
     { path: '/view/:id', component:View },
     { path: '/:notFound(.*)', component: NotFound }
   ],
