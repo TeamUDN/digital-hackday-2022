@@ -19,7 +19,6 @@
   >
   </vue-particles>
   <img id="logo" alt="OnMeeP logo" src="./assets/onmeep_logo.png">
-  <h1>App</h1>
   <router-link to="/view/1">画面1</router-link>
   <router-link to="/view/2">画面2</router-link>
   <router-view />
