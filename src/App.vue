@@ -38,6 +38,7 @@ export default {
 <style lang="scss">
 /* reset css */
 p {
+  width: fit-content;
   margin: 0;
 }
 a {
@@ -73,6 +74,7 @@ a {
   flex-flow: column;
   gap: 3rem;
   margin: 0 auto;
+  align-items: center;
 }
 /* メインコンテンツの囲い */
 .whiteSquare {
