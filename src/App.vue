@@ -24,9 +24,10 @@
   <router-link to="/view/2">画面2</router-link>
   <router-view />
   -->
-  <router-link to="/view/1">
+  <router-link to="/make-question">
     <Btn btn-text="名刺テンプレートを作る"></Btn>
   </router-link>
+  <router-view />
 </template>
 
 <script>

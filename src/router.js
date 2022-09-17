@@ -22,12 +22,14 @@
 
 import { createRouter, createWebHistory } from 'vue-router';
 
+import MakeQuestion from './components/pages/MakeQuestion.vue'
 import View from './View.vue';
 import NotFound from './components/NotFound.vue';
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    { path: '/make-question', component:MakeQuestion },
     { path: '/view/:id', component:View },
     { path: '/:notFound(.*)', component: NotFound }
   ],
