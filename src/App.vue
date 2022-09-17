@@ -40,6 +40,7 @@ export default {
 p {
   width: fit-content;
   margin: 0;
+  font-weight: bold;
 }
 a {
   text-decoration: none;
