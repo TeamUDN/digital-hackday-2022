@@ -147,8 +147,6 @@ export default {
   },
   data() {
     return {
-      // userName,answer1,answer2,answer3は値が入力されると自動で各変数に代入されます
-      // imgURLはユーザがアイコンの画像を押すと、各画像に対応した値が変数に代入されます
       userName: "",
       imgURL: "woman_1",
       answer1: "",
@@ -159,9 +157,7 @@ export default {
   },
   mounted() {
     db.collection("OnMeeP-Question")
-    //TODO:URLパラメータから出す問題を変える
-    //'12'という文字列が入っている部分へ、View.vueから取ってきたパラメータを入れてください
-    .where('question_url', '==', '12')
+    .where('question_url', '==', this.$route.params.id)
     .get()
     .then((querysnapshot) =>{
       if(querysnapshot.empty){console.log("データないよ！！")}
@@ -170,7 +166,6 @@ export default {
         console.log(doc.id, "=>", doc.data());
       });
     });
-    /* { "question3": "高校時代の部活は何でしたか", "question2_required": true, "question2": "日頃の業務内容を教えてください", "question3_required": "true", "question1": "交流会に参加した理由は？", "question1_required": true, "question_url": "12" } */
   },
   methods: {
     iconSelect(value) {
@@ -185,7 +180,7 @@ export default {
       // TODO:必須の項目が全て記入されているか確認し、不備があればエラーを表示する
       // TODO:DBに値を挿入してからthis.$router.push('/user-list/1234')を行うように修正する
       setTimeout(() => {
-        this.$router.push("/user-list/1234");
+        this.$router.push(`/user-list/${this.$route.params.id}`);
       }, 5000);
     },
   },
