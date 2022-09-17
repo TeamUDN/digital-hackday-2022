@@ -122,7 +122,7 @@ export default {
     transition: all .3s;
     &:hover {
       opacity: 0.6;
-      filter: brightness(110%);
+      filter: brightness(100%);
     }
   }
 }
