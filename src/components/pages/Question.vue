@@ -79,12 +79,12 @@
           </div>
         </div>
         <!-- TODO:v-forで自動生成する -->
-        <!-- TODO:必須or任意の出し分けをするように修正 -->
         <!-- answer 1 -->
         <div class="questionFlex">
           <p>Q1. {{data[0]?.question1}}</p>
           <div class="inputFlex">
-            <label for="answer1">必須</label>
+            <label for="answer1" v-if="data[0]?.question1_required === true">必須</label>
+            <label for="answer1" v-if="data[0]?.question1_required === false">任意</label>
             <input
               id="answer1"
               name="answer1"
@@ -98,7 +98,8 @@
           <p>Q2. {{data[0]?.question2}}</p>
           <div class="inputFlex">
             <!-- TODO:必須or任意のチェックを行う -->
-            <label for="answer2">必須</label>
+            <label for="answer2" v-if="data[0]?.question2_required === true">必須</label>
+            <label for="answer2" v-if="data[0]?.question2_required === false">任意</label>
             <input
               id="answer2"
               name="answer2"
@@ -111,7 +112,8 @@
         <div class="questionFlex">
           <p>Q3. {{data[0]?.question3}}</p>
           <div class="inputFlex">
-            <label for="answer3">必須</label>
+            <label for="answer3" v-if="data[0]?.question3_required === true">必須</label>
+            <label for="answer3" v-if="data[0]?.question3_required === false">任意</label>
             <input
               id="answer3"
               name="answer3"
