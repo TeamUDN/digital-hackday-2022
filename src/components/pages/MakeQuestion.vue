@@ -109,12 +109,20 @@ export default {
       console.log(this.Q2radio)
       console.log(this.question3)
       console.log(this.Q3radio)
+
+      // 乱数生成（半角英字大文字小文字・12桁）
+      let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+      let rand_str = ''
+      for ( var i = 0; i < 12; i++ ) {
+        rand_str += chars.charAt(Math.floor(Math.random() * chars.length))
+      }
+      console.log(rand_str)
+
       // TODO:3つの項目が全て記入されているか確認し、不備があればエラーを表示する
       // TODO:DBに値を挿入してからthis.$router.push('/create-url')を行うように修正する
-      // TODO:乱数を生成する
       setTimeout(() => {
         this.$router.push('/create-url')
-      }, 5000);
+      }, 5000)
     }
   }
 }
