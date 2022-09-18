@@ -4,7 +4,7 @@
       <img id="logo" alt="OnMeeP logo" src="../../assets/onmeep_logo.png">
       <div id="btn">
         <router-link to="/make-question">
-          <Btn btn-text="名刺テンプレートを作る"></Btn>
+          <Btn btn-text="プロフィールカードのテンプレートを作成する"></Btn>
         </router-link>
       </div>
     </div>
