@@ -24,6 +24,7 @@ export default {
   },
   mounted() {
     console.log('mounted!')
+    
     // TODO:ここにDBからURLを取得する処理を追加
   },
   methods: {
