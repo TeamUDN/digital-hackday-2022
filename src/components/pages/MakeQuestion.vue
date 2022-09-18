@@ -17,15 +17,16 @@
               <option value="学生時代の部活は何をしていましたか？"></option>
             </datalist>
           </div>
-          <div class="radioFlex">
+          <div class="radioFlex" id="Q1Choices">
             <div>
-              <input type="radio" id="Q1Choice1" name="Q1" value="required" checked>
+              <input type="radio" id="Q1Choice1" value="true" checked v-model="question1_required">
               <label for="Q1Choice1">必須</label>
             </div>
             <div>
-              <input type="radio" id="Q1Choice2" name="Q1" value="noRequired">
+              <input type="radio" id="Q1Choice2" value="false" v-model="question1_required">
               <label for="Q1Choice2">任意</label>
             </div>
+              <span>洗濯オプション：{{question1_required}}</span>
           </div>
         </div>
         <!-- 質問2 -->
@@ -39,15 +40,16 @@
               <option value="学生時代の部活は何をしていましたか？"></option>
             </datalist>
           </div>
-          <div class="radioFlex">
+          <div class="radioFlex" id="Q2Choices">
             <div>
-              <input type="radio" id="Q2Choice1" name="Q2" value="required" checked>
+              <input type="radio" id="Q2Choice1" name="Q2" value="true" checked v-model="question2_required">
               <label for="Q2Choice1">必須</label>
             </div>
             <div>
-              <input type="radio" id="Q2Choice2" name="Q2" value="noRequired">
+              <input type="radio" id="Q2Choice2" name="Q2" value="false" v-model="question2_required">
               <label for="Q2Choice2">任意</label>
             </div>
+            <span>洗濯オプション：{{question2_required}}</span>
           </div>
         </div>
         <!-- 質問3 -->
@@ -61,20 +63,21 @@
               <option value="学生時代の部活は何をしていましたか？"></option>
             </datalist>
           </div>
-          <div class="radioFlex">
+          <div class="radioFlex" id="Q3Choices">
             <div>
-              <input type="radio" id="Q3Choice1" name="Q3" value="required" checked>
+              <input type="radio" id="Q3Choice1" name="Q3" value="true" checked v-model="question3_required">
               <label for="Q3Choice1">必須</label>
             </div>
             <div>
-              <input type="radio" id="Q3Choice2" name="Q3" value="noRequired">
+              <input type="radio" id="Q3Choice2" name="Q3" value="false" v-model="question3_required"> 
               <label for="Q3Choice2">任意</label>
             </div>
+            <span>洗濯オプション：{{question3_required}}</span>
           </div>
         </div>
       </div>
       <div id="btn">
-        <router-link to="/create-url">
+        <router-link to="/create-url" v-on:click="addTodo">
           <Btn btn-text="URLを発行する"></Btn>
         </router-link>
       </div>
@@ -85,12 +88,55 @@
 <script>
 import Btn from '../design/btn_design.vue'
 import logoSmall from '../design/RightTopLogo.vue'
+import db from "../../firebase.js";
+
 export default {
   components: {
     Btn,
     logoSmall,
   },
+  //データ挿入用
+  name: 'Add',
+  data() {
+    return {
+      question1: '',
+      question2: '',
+      question3: '',
+      question1_required: 'true',
+      question2_required: 'false',
+      question3_required: 'false',
+      question_url:'1234',
+    }
+  },
+  methods: {
+  addTodo:function () {
+    var self = this
+    db.collection("OnMeeP-Question")
+    .add({
+        question1: self.question1.value,
+        question2: self.question2.value,
+        question3: self.question3.value,
+        // question1_required: self.document.getElemtentById('Q1Choices').element['Q1'].value,
+        // question2_required: self.document.getElemtentById('Q2Choices').element['Q2'].value,
+        // question3_required: self.document.getElemtentById('Q3Choices').element['Q3'].value,
+        // question1_required: self.pickedQ1,
+        // question2_required: self.pickedQ2,
+        // question3_required: self.pickedQ3,
+
+      })
+      .then(function () {
+        // 追加に成功したら、name を空にする
+        console.log("動いてるよ")
+      })
+      .catch(function (e) {
+        // エラー時の処理
+        console.log(e+"失敗した！！")
+      })
+  }
 }
+}
+
+
 </script>
 
 <style scoped lang="scss">
