@@ -19,14 +19,13 @@
           </div>
           <div class="radioFlex" id="Q1Choices">
             <div>
-              <input type="radio" id="Q1Choice1" name="Q1" value="required" v-model="Q1radio" checked>
+              <input type="radio" id="Q1Choice1" name="Q1" value=true v-model="question1_required" checked>
               <label for="Q1Choice1">必須</label>
             </div>
             <div>
-              <input type="radio" id="Q1Choice2" name="Q1" value="noRequired" v-model="Q1radio">
+              <input type="radio" id="Q1Choice2" name="Q1" value=false v-model="question1_required">
               <label for="Q1Choice2">任意</label>
             </div>
-              <span>洗濯オプション：{{question1_required}}</span>
           </div>
         </div>
         <!-- 質問2 -->
@@ -42,14 +41,13 @@
           </div>
           <div class="radioFlex" id="Q2Choices">
             <div>
-              <input type="radio" id="Q2Choice1" name="Q2" value="required" v-model="Q2radio" checked>
+              <input type="radio" id="Q2Choice1" name="Q2" value=true v-model="question2_required" checked>
               <label for="Q2Choice1">必須</label>
             </div>
             <div>
-              <input type="radio" id="Q2Choice2" name="Q2" value="noRequired" v-model="Q2radio">
+              <input type="radio" id="Q2Choice2" name="Q2" value=false v-model="question2_required">
               <label for="Q2Choice2">任意</label>
             </div>
-            <span>洗濯オプション：{{question2_required}}</span>
           </div>
         </div>
         <!-- 質問3 -->
@@ -65,14 +63,13 @@
           </div>
           <div class="radioFlex" id="Q3Choices">
             <div>
-              <input type="radio" id="Q3Choice1" name="Q3" value="required" v-model="Q3radio" checked>
+              <input type="radio" id="Q3Choice1" name="Q3" value=true v-model="question3_required" checked>
               <label for="Q3Choice1">必須</label>
             </div>
             <div>
-              <input type="radio" id="Q3Choice2" name="Q3" value="noRequired" v-model="Q3radio">
+              <input type="radio" id="Q3Choice2" name="Q3" value=false v-model="question3_required">
               <label for="Q3Choice2">任意</label>
             </div>
-            <span>洗濯オプション：{{question3_required}}</span>
           </div>
         </div>
       </div>
@@ -103,19 +100,20 @@ export default {
       question1: '',
       question2: '',
       question3: '',
-      Q1radio: 'required',
-      Q2radio: 'required',
-      Q3radio: 'required',
+      question1_required: true,
+      question2_required: true,
+      question3_required: true,
+      question_url: '',
     }
   },
   methods: {
     insertQuestionData() {
       console.log(this.question1)
-      console.log(this.Q1radio)
+      console.log(this.question1_required)
       console.log(this.question2)
-      console.log(this.Q2radio)
+      console.log(this.question2_required)
       console.log(this.question3)
-      console.log(this.Q3radio)
+      console.log(this.question3_required)
 
       // 乱数生成（半角英字大文字小文字・12桁）
       let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
@@ -125,27 +123,26 @@ export default {
       }
       console.log(rand_str)
 
+
       // TODO:3つの項目が全て記入されているか確認し、不備があればエラーを表示する
       // TODO:DBに値を挿入してからthis.$router.push('/create-url')を行うように修正する
 
     var self = this
       db.collection("OnMeeP-Question")
       .add({
-        question1: self.question1.value,
-        question2: self.question2.value,
-        question3: self.question3.value,
-        // question1_required: self.document.getElemtentById('Q1Choices').element['Q1'].value,
-        // question2_required: self.document.getElemtentById('Q2Choices').element['Q2'].value,
-        // question3_required: self.document.getElemtentById('Q3Choices').element['Q3'].value,
-        // question1_required: self.pickedQ1,
-        // question2_required: self.pickedQ2,
-        // question3_required: self.pickedQ3,
+        question1: self.question1,
+        question2: self.question2,
+        question3: self.question3,
+        question1_required: self.question1_required,
+        question2_required: self.question2_required,
+        question3_required: self.question3_required,
+        question_url:rand_str
 
       })
       .then(function () {
         // 追加に成功したら、name を空にする
         console.log("動いてるよ")
-        this.$router.push('/create-url')
+        self.$router.push('/create-url')
       })
       .catch(function (e) {
         // エラー時の処理
