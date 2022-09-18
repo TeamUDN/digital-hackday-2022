@@ -125,7 +125,6 @@ export default {
 
 
       // TODO:3つの項目が全て記入されているか確認し、不備があればエラーを表示する
-      // TODO:DBに値を挿入してからthis.$router.push('/create-url')を行うように修正する
 
     var self = this
       db.collection("OnMeeP-Question")
@@ -137,12 +136,11 @@ export default {
         question2_required: self.question2_required,
         question3_required: self.question3_required,
         question_url:rand_str
-
       })
       .then(function () {
         // 追加に成功したら、name を空にする
         console.log("動いてるよ")
-        self.$router.push('/create-url')
+        self.$router.push(`/create-url/${rand_str}`)
       })
       .catch(function (e) {
         // エラー時の処理

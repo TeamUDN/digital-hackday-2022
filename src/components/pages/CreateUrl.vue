@@ -19,12 +19,12 @@ export default {
   },
   data() {
     return {
-      urlStr: 'AqqSJYdzQLfi',//sample str
+      urlStr: '',
     }
   },
   mounted() {
     console.log('mounted!')
-    // TODO:ここにDBからURLを取得する処理を追加
+    this.urlStr = this.$route.params.id
   },
   methods: {
     copyToClipboard() {
