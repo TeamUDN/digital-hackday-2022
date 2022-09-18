@@ -83,10 +83,31 @@
 
 <script>
 import logoSmall from '../design/RightTopLogo.vue'
+import db from "../../firebase.js";
+
 export default {
   components: {
     logoSmall,
   },
+
+  name: "Firestore",
+  data() {
+    return {
+      data: [],
+    };
+  },
+  mounted() {
+    db.collection("OnMeeP-Answer")
+    .where('question_url', '==', this.$route.params.id)
+    .get()
+    .then((querysnapshot) =>{
+      if(querysnapshot.empty){console.log("データないよ！！")}
+      querysnapshot.forEach((doc) => {
+        this.data.push(doc.data())
+        console.log(doc.id, "=>", doc.data());
+      });
+    });
+  }
 }
 </script>
 
