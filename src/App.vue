@@ -53,6 +53,9 @@ button{
   padding: 0;
   appearance: none;
 }
+body {
+  margin: 0;
+}
 /* common css */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -93,5 +96,10 @@ button{
   border-radius: 5px;
   padding: 2.5rem;
   margin: 0 auto;
+}
+/* icon style */
+.fa-icon {
+  font-size: 1.5rem;
+  color: #0a72e2;
 }
 </style>

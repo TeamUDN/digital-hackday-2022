@@ -4,7 +4,7 @@
     <div class="mainArea">
       <p class="title">プロフィールカードの作成</p>
       <div class="whiteSquare">
-        <p>質問に回答してください</p>
+        <!--<p>質問に回答してください</p>-->
         <!-- TODO:add progress bar here -->
         <!-- TODO:入力完了したらチェックマークを表示させる -->
         <div class="inputFlex">
@@ -79,17 +79,12 @@
           </div>
         </div>
         <!-- TODO:v-forで自動生成する -->
-        <!-- TODO:各質問文をDBから取得したデータを用いるように修正する -->
         <!-- answer 1 -->
-
-        <li v-for="(item, index) in data" :key="index">
-          {{ item }}
-        </li>
-
         <div class="questionFlex">
-          <p>Q1. 交流会に参加した理由は？</p>
+          <p>Q1. {{data[0]?.question1}}</p>
           <div class="inputFlex">
-            <label for="answer1">必須</label>
+            <label for="answer1" v-if="data[0]?.question1_required === true">必須</label>
+            <label for="answer1" v-if="data[0]?.question1_required === false">任意</label>
             <input
               id="answer1"
               name="answer1"
@@ -100,10 +95,11 @@
         </div>
         <!-- answer 2 -->
         <div class="questionFlex">
-          <p>Q2. 日頃の業務内容を教えて下さい</p>
+          <p>Q2. {{data[0]?.question2}}</p>
           <div class="inputFlex">
             <!-- TODO:必須or任意のチェックを行う -->
-            <label for="answer2">必須</label>
+            <label for="answer2" v-if="data[0]?.question2_required === true">必須</label>
+            <label for="answer2" v-if="data[0]?.question2_required === false">任意</label>
             <input
               id="answer2"
               name="answer2"
@@ -114,9 +110,10 @@
         </div>
         <!-- answer 3 -->
         <div class="questionFlex">
-          <p>Q3. 学生時代の部活は何をしていましたか？</p>
+          <p>Q3. {{data[0]?.question3}}</p>
           <div class="inputFlex">
-            <label for="answer3">必須</label>
+            <label for="answer3" v-if="data[0]?.question3_required === true">必須</label>
+            <label for="answer3" v-if="data[0]?.question3_required === false">任意</label>
             <input
               id="answer3"
               name="answer3"
@@ -143,14 +140,13 @@ import Btn from "../design/btn_design.vue";
 import db from "../../firebase.js"; //add database
 
 export default {
+  name: "Firestore",
   components: {
     logoSmall,
     Btn,
   },
   data() {
     return {
-      // userName,answer1,answer2,answer3は値が入力されると自動で各変数に代入されます
-      // imgURLはユーザがアイコンの画像を押すと、各画像に対応した値が変数に代入されます
       userName: "",
       imgURL: "woman_1",
       answer1: "",
@@ -158,6 +154,18 @@ export default {
       answer3: "",
       data: [],
     };
+  },
+  mounted() {
+    db.collection("OnMeeP-Question")
+    .where('question_url', '==', this.$route.params.id)
+    .get()
+    .then((querysnapshot) =>{
+      if(querysnapshot.empty){console.log("データないよ！！")}
+      querysnapshot.forEach((doc) => {
+        this.data.push(doc.data())
+        console.log(doc.id, "=>", doc.data());
+      });
+    });
   },
   methods: {
     iconSelect(value) {
@@ -170,28 +178,12 @@ export default {
       console.log(this.answer2);
       console.log(this.answer3);
       // TODO:必須の項目が全て記入されているか確認し、不備があればエラーを表示する
-      // TODO:DBに値を挿入してからthis.$router.push('/user-list/1234')を行うように修正する
+      // TODO:DBに値を挿入してからページ遷移を行うように修正する
       setTimeout(() => {
-        this.$router.push("/user-list/1234");
+        this.$router.push(`/user-list/${this.$route.params.id}`);
       }, 5000);
     },
   },
-  
-  name: "Firestore",
-  mounted: function () {
-    db.collection("OnMeeP-Question")
-      //TODO:URLパラメータから出す問題を変える
-      //'12'という文字列が入っている部分へ、View.vueから取ってきたパラメータを入れてください
-      .where('question_url', '==', '12')
-      .get()
-      .then((querysnapshot) =>{
-        if(querysnapshot.empty){console.log("データないよ！！")}
-        querysnapshot.forEach((doc) => {
-          this.data.push(doc.data())
-      console.log(doc.id, "=>", doc.data());
-      });
-      });
-    },
   }
 </script>
 
