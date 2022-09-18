@@ -177,6 +177,7 @@ export default {
       console.log(this.answer1);
       console.log(this.answer2);
       console.log(this.answer3);
+      
       // TODO:必須の項目が全て記入されているか確認し、不備があればエラーを表示する
       // TODO:DBに値を挿入してからページ遷移を行うように修正する
       setTimeout(() => {
