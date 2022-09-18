@@ -4,9 +4,11 @@
     <div class="whiteSquare">
       <p>URLが発行されました！</p>
       <p class="urlFlex">
-        <router-link :to="`/question/${urlStr}`" target="_blank">https://udon-digital-hackday-2022.web.app/question/{{urlStr}}</router-link>
+        <!-- <router-link :to="`/question/${urlStr}`" target="_blank">https://udon-digital-hackday-2022.web.app/question/{{urlStr}}</router-link>-->
+        <router-link :to="`/question/${urlStr}`" target="_blank">{{urlStr}}</router-link>         
         <fa icon="copy" class="fa-icon" @click="copyToClipboard()"/>
       </p>
+      <p>トップページのパスワードにこのリンクを入力してください！</p>
     </div>
   </div>
 </template>
@@ -19,16 +21,17 @@ export default {
   },
   data() {
     return {
-      urlStr: 'AqqSJYdzQLfi',//sample str
+      urlStr: '',
     }
   },
   mounted() {
     console.log('mounted!')
-    // TODO:ここにDBからURLを取得する処理を追加
+    this.urlStr = this.$route.params.id
   },
   methods: {
     copyToClipboard() {
-      let copyText = `https://udon-digital-hackday-2022.web.app/question/${this.urlStr}`
+      //let copyText = `https://udon-digital-hackday-2022.web.app/question/${this.urlStr}`
+      let copyText = `${this.urlStr}`
       navigator.clipboard.writeText(copyText)
         .then(() => {
           // TODO:copyed!表示を出す

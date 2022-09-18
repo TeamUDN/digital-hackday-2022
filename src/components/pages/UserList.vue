@@ -12,66 +12,17 @@
         </div>
       </div>
       <div class="profileArea">
-        <p class="title">プロフィールカード一覧</p>
+        <p class="title profileTitle">プロフィールカード一覧</p>
         <!-- TODO:DBから取得したデータをv-forで回してプロフィールカードを自動生成する -->
         <div class="profileCardArea">
-          <!-- カード1 -->
-          <div class="whiteSquare">
-            <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
+          <div class="whiteSquare" v-for="(item, index) in data" :key="index">
+            <img class="profileIcon" alt="profile icon woman_1"  :src="require('../../assets/profile_icon/' + item.icon_number + '.png')" >
             <div class="profileText">
-              <p class="cardName">しろくま</p>
+              <p class="cardName">{{item.name}}</p>
               <div class="userQuestion">
-                <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
-                <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
-                <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
-              </div>
-            </div>
-          </div>
-          <!-- カード2 -->
-          <div class="whiteSquare">
-            <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
-            <div class="profileText">
-              <p class="cardName">しろくま</p>
-              <div class="userQuestion">
-                <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
-                <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
-                <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
-              </div>
-            </div>
-          </div>
-          <!-- カード3 -->
-          <div class="whiteSquare">
-            <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
-            <div class="profileText">
-              <p class="cardName">しろくま</p>
-              <div class="userQuestion">
-                <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
-                <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
-                <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
-              </div>
-            </div>
-          </div>
-          <!-- カード4 -->
-          <div class="whiteSquare">
-            <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
-            <div class="profileText">
-              <p class="cardName">しろくま</p>
-              <div class="userQuestion">
-                <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
-                <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
-                <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
-              </div>
-            </div>
-          </div>
-          <!-- カード5 -->
-          <div class="whiteSquare">
-            <img class="profileIcon" alt="profile icon woman_1" src="../../assets/profile_icon/woman_1.png">
-            <div class="profileText">
-              <p class="cardName">しろくま</p>
-              <div class="userQuestion">
-                <p>A1. 他部署の社員との交流を深めたいと思ったから</p>
-                <p>A2. Webアプリのフロントエンドを中心に開発しています</p>
-                <p>A3. 吹奏楽部でバスクラリネットを担当していました</p>
+                <p>A1. {{item.Answer1}}</p>
+                <p>A2. {{item.Answer2}}</p>
+                <p>A3. {{item.Answer3}}</p>
               </div>
             </div>
           </div>
@@ -83,10 +34,31 @@
 
 <script>
 import logoSmall from '../design/RightTopLogo.vue'
+import db from "../../firebase.js";
+
 export default {
   components: {
     logoSmall,
   },
+
+  name: "Firestore",
+  data() {
+    return {
+      data: [],
+    };
+  },
+  mounted() {
+    db.collection("OnMeeP-Answer")
+    .where('question_url', '==', this.$route.params.id)
+    .get()
+    .then((querysnapshot) =>{
+      if(querysnapshot.empty){console.log("データないよ！！")}
+      querysnapshot.forEach((doc) => {
+        this.data.push(doc.data())
+        console.log(doc.id, "=>", doc.data());
+      });
+    });
+  }
 }
 </script>
 
@@ -152,5 +124,8 @@ export default {
   flex-direction: column;
   gap: 1rem;
   align-items: flex-start;
+}
+.profileTitle {
+  margin: 0 auto 1.5rem;
 }
 </style>
