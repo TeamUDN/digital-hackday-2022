@@ -42,7 +42,7 @@ export default {
 <style scoped lang="scss">
 #logo {
   width: 70%;
-  margin: 0 auto 7rem;
+  margin: 0 auto 1rem;
 }
 #btn {
   width: fit-content;
