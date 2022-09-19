@@ -5,6 +5,7 @@
   <div>画面{{ $route.params.id }}</div>
   <div id="add"> <!--ここのidはexport defaultのnameと対応-->
     <Question></Question> <!--このタグはcomponentにimportしたページ名に対応-->
+    <UserList></UserList> 
   </div>
 </template>
   
@@ -12,11 +13,12 @@
 // import Firestore from './components/dataget.vue';
 // import Add from './components/dataadd.vue';
 import Question from './components/pages/Question.vue';
+import UserList from './components/pages/UserList.vue';
 
 export default {
   name: 'add',
   components: {
-    Question
+    Question,UserList
   }
 };
 </script>

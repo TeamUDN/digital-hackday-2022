@@ -13,16 +13,16 @@
             id="name"
             name="name"
             placeholder="名前 or ニックネーム"
-            v-model="userName"
+            v-model="name"
           />
         </div>
         <div>
           <p>アイコン選択</p>
           <div id="containerArea">
             <img
-              v-if="imgURL"
+              v-if="icon_number"
               alt="profile icon woman_1"
-              :src="require(`@/assets/profile_icon//${imgURL}.png`)"
+              :src="require(`@/assets/profile_icon//${icon_number}.png`)"
             />
             <div id="container">
               <img
@@ -83,13 +83,13 @@
         <div class="questionFlex">
           <p>Q1. {{data[0]?.question1}}</p>
           <div class="inputFlex">
-            <label for="answer1" v-if="data[0]?.question1_required === true">必須</label>
-            <label for="answer1" v-if="data[0]?.question1_required === false">任意</label>
+            <label for="Answer1" v-if="data[0]?.question1_required === true">必須</label>
+            <label for="Answer1" v-if="data[0]?.question1_required === false">任意</label>
             <input
-              id="answer1"
-              name="answer1"
+              id="Answer1"
+              name="Answer1"
               placeholder="回答を入力してください"
-              v-model="answer1"
+              v-model="Answer1"
             />
           </div>
         </div>
@@ -98,13 +98,13 @@
           <p>Q2. {{data[0]?.question2}}</p>
           <div class="inputFlex">
             <!-- TODO:必須or任意のチェックを行う -->
-            <label for="answer2" v-if="data[0]?.question2_required === true">必須</label>
-            <label for="answer2" v-if="data[0]?.question2_required === false">任意</label>
+            <label for="Answer2" v-if="data[0]?.question2_required === true">必須</label>
+            <label for="Answer2" v-if="data[0]?.question2_required === false">任意</label>
             <input
-              id="answer2"
-              name="answer2"
+              id="Answer2"
+              name="Answer2"
               placeholder="回答を入力してください"
-              v-model="answer2"
+              v-model="Answer2"
             />
           </div>
         </div>
@@ -112,13 +112,13 @@
         <div class="questionFlex">
           <p>Q3. {{data[0]?.question3}}</p>
           <div class="inputFlex">
-            <label for="answer3" v-if="data[0]?.question3_required === true">必須</label>
-            <label for="answer3" v-if="data[0]?.question3_required === false">任意</label>
+            <label for="Answer3" v-if="data[0]?.question3_required === true">必須</label>
+            <label for="Answer3" v-if="data[0]?.question3_required === false">任意</label>
             <input
-              id="answer3"
-              name="answer3"
+              id="Answer3"
+              name="Answer3"
               placeholder="回答を入力してください"
-              v-model="answer3"
+              v-model="Answer3"
             />
           </div>
         </div>
@@ -136,7 +136,6 @@
 <script>
 import logoSmall from "../design/RightTopLogo.vue";
 import Btn from "../design/btn_design.vue";
-
 import db from "../../firebase.js"; //add database
 
 export default {
@@ -147,11 +146,11 @@ export default {
   },
   data() {
     return {
-      userName: "",
-      imgURL: "woman_1",
-      answer1: "",
-      answer2: "",
-      answer3: "",
+      name: "",
+      icon_number: "woman_1",
+      Answer1: "",
+      Answer2: "",
+      Answer3: "",
       data: [],
     };
   },
@@ -169,20 +168,39 @@ export default {
   },
   methods: {
     iconSelect(value) {
-      this.imgURL = value;
+      this.icon_number = value;
     },
     insertProfileData() {
-      console.log(this.userName);
-      console.log(this.imgURL);
-      console.log(this.answer1);
-      console.log(this.answer2);
-      console.log(this.answer3);
-      
+      console.log(this.name);
+      console.log(this.icon_number);
+      console.log(this.Answer1);
+      console.log(this.Answer2);
+      console.log(this.Answer3);
+      var self = this
+      db.collection("OnMeeP-Answer")
+      .add({
+        name: self.name,
+        icon_number: self.icon_number,
+        Answer1: self.Answer1,
+        Answer2: self.Answer2,
+        Answer3: self.Answer3,
+        question_url: self.$route.params.id
+
+      })
+      .then(function () {
+        // 追加に成功したら、name を空にする
+        console.log("動いてるよ")
+        self.$router.push(`/user-list/${self.$route.params.id}`)
+      })
+      .catch(function (e) {
+        // エラー時の処理
+        console.log(e+"失敗した！！")
+      })
       // TODO:必須の項目が全て記入されているか確認し、不備があればエラーを表示する
       // TODO:DBに値を挿入してからページ遷移を行うように修正する
-      setTimeout(() => {
-        this.$router.push(`/user-list/${this.$route.params.id}`);
-      }, 5000);
+      // setTimeout(() => {
+      //   this.$router.push(`/user-list/${this.$route.params.id}`);
+      // }, 5000);
     },
   },
   }
